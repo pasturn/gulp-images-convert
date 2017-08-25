@@ -2,7 +2,7 @@
   "name": "gulp-images-convert",
   "version": "1.0.0",
   "description": "a image convert plugin for gulp",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bugs": "https://github.com/feathermore/gulp-images-convert/issues",
   "repository": {
     "type": "git",
