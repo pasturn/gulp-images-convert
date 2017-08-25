@@ -3,14 +3,19 @@ var gutil = require('gulp-util');
 var images = require('images');
 var PluginError = gutil.PluginError;
 
-const PLUGIN_NAME = 'gulp-images-convert';
+var PLUGIN_NAME = 'gulp-images-convert';
 
-function ImagesConvert(option) {
+function imagesConvert(option) {
   if (!option) {
     throw new PluginError(PLUGIN_NAME, 'Missing option!');
   }
-  var defaults = Object.assign({})
+  
+  var targetType = option.targetType
+  var quality = option.quality
 
+  if (!targetType) {
+    throw new PluginError(PLUGIN_NAME, 'Missing targetType')
+  }
 
   var stream = through.obj(function (file, enc, cb) {
     if (file.isStream()) {
@@ -18,7 +23,7 @@ function ImagesConvert(option) {
       return cb();
     }
     if (file.isBuffer()) {
-      file.contents = images(file.contents).encode(fileType)
+      file.contents = images(file.contents).encode(targetType, quality ? {quality: quality} : undefined)
     }
 
     this.push(file);
@@ -29,4 +34,4 @@ function ImagesConvert(option) {
   return stream
 }
 
-module.exports = ImagesConvert;
+module.exports = imagesConvert;
