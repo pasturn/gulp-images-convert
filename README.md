@@ -13,7 +13,7 @@ Install package with NPM and add it to your development dependencies:
 ```js
 var gulp = require('gulp');
 var rename = require('gulp-rename');
-var imagesConvert = require('gulp-image-convert');
+var imagesConvert = require('gulp-images-convert');
 
 gulp.task('convert', function () {
   return gulp.src('assets/*.jpg')
