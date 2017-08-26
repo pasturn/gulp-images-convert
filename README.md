@@ -19,7 +19,7 @@ gulp.task('convert', function () {
   return gulp.src('assets/*.jpg')
       .pipe(imagesConvert({targetType: 'png'}))
       .pipe(rename({extname: ".png"}))
-      .pipe('dist/assets');
+      .pipe(gulp.dest('dist/assets'));
 })
 
 ```
