@@ -10,6 +10,7 @@ function imagesConvert(option) {
     throw new PluginError(PLUGIN_NAME, 'Missing option!');
   }
   
+  option = Object.assign({ targetType: 'png', quality: 70 }, option)
   var targetType = option.targetType
   var quality = option.quality
 
@@ -23,7 +24,7 @@ function imagesConvert(option) {
       return cb();
     }
     if (file.isBuffer()) {
-      file.contents = images(file.contents).encode(targetType, quality ? {quality: quality} : undefined)
+      file.contents = images(file.contents).encode(targetType, quality)
     }
 
     this.push(file);
