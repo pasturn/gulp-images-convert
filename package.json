@@ -1,6 +1,6 @@
 {
   "name": "gulp-images-convert",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "a image convert plugin for gulp",
   "main": "dist/index.js",
   "bugs": "https://github.com/pasturn/gulp-images-convert/issues",
