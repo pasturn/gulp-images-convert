@@ -1,7 +1,11 @@
+"use strict";
+
+require("@babel/polyfill");
 var through = require('through2');
 var gutil = require('gulp-util');
-var images = require('images');
+var sharp = require('sharp');
 var PluginError = gutil.PluginError;
+
 
 var PLUGIN_NAME = 'gulp-images-convert';
 
@@ -17,18 +21,20 @@ function imagesConvert(option) {
     throw new PluginError(PLUGIN_NAME, 'Missing targetType')
   }
 
-  var stream = through.obj(function (file, enc, cb) {
+  var stream = through.obj(async function (file, enc, cb) {
     if (file.isStream()) {
       this.emit('error', new PluginError(PLUGIN_NAME, 'Streams are not supported'))
       return cb();
     }
     if (file.isBuffer()) {
-      file.contents = images(file.contents).encode(targetType, quality ? {quality: quality} : undefined)
+      var data = await sharp(file.contents).toFormat(targetType, quality ? {
+        quality: quality
+      } : undefined).toBuffer();
+
+      file.contents = data;
+      this.push(file);
+      cb()
     }
-
-    this.push(file);
-
-    cb()
   })
 
   return stream
