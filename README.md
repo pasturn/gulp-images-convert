@@ -1,7 +1,7 @@
 # gulp-images-convert
 
 
-[![build status](https://travis-ci.org/feathermore/gulp-images-convert.svg?branch=master)](https://travis-ci.org/feathermore/gulp-images-convert)
+[![build status](https://travis-ci.org/pasturn/gulp-images-convert.svg?branch=master)](https://travis-ci.org/pa stu/gulp-images-convert)
 
 This is a wrapper of images package for gulp. It support encoder(png/jpeg/gif) convert to encoder(png/jpeg).
 ## Installation
